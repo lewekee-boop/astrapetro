@@ -35,6 +35,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--gray-600);
+  font-size: 18px;
   background: linear-gradient(180deg, #f9fbff 0%, #eef3fa 50%, #e7eef8 100%);
   min-height: 100vh;
   position: relative;
@@ -103,7 +104,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: 32px 0;
   gap: 24px;
 }
 
@@ -111,6 +112,49 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+}
+
+.logo-star {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin-slow 28s linear infinite;
+}
+
+.logo-star svg {
+  width: 100%;
+  height: 100%;
+  fill: #ffffff;
+  stroke: rgba(31, 95, 191, 0.8);
+  stroke-width: 2;
+  animation: pulse-soft 6s ease-in-out infinite;
+  transition: filter 220ms ease;
+}
+
+.logo:hover .logo-star {
+  animation-duration: 14s;
+}
+
+.logo:hover .logo-star svg {
+  animation-duration: 3.5s;
+  filter: drop-shadow(0 0 6px rgba(31, 95, 191, 0.55));
+}
+
+.logo-star svg,
+.logo-star {
+  transform-origin: 50% 50%;
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
 }
 
 .logo-img {
@@ -345,39 +389,116 @@ h3 {
   color: var(--blue-500);
 }
 
-.hud-graphic {
+.cad-anim {
   position: relative;
-  height: 190px;
+  height: 220px;
   margin-bottom: 16px;
 }
 
-.layer {
+.cad-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cad-grid path {
+  stroke: rgba(31, 95, 191, 0.18);
+  stroke-width: 1;
+  fill: none;
+  opacity: 0;
+  animation: cad-grid 0.6s ease forwards;
+}
+
+.cad-axes path {
+  stroke: rgba(31, 95, 191, 0.35);
+  stroke-width: 1.2;
+  fill: none;
+  opacity: 0;
+  animation: cad-grid 0.6s ease forwards;
+}
+
+.cad-contour path {
+  stroke: rgba(31, 95, 191, 0.45);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: cad-draw 1s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.cad-contour .cad-inner {
+  stroke-width: 1;
+  animation-delay: 0.85s;
+}
+
+.cad-detail {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: cad-detail 0.8s ease forwards;
+  animation-delay: 1.6s;
+}
+
+.cad-detail path {
+  stroke: rgba(31, 95, 191, 0.35);
+  stroke-width: 1;
+  fill: none;
+}
+
+.cad-detail circle {
+  fill: rgba(31, 95, 191, 0.5);
+}
+
+.cad-detail text {
+  font-family: var(--font-body);
+  font-size: 12px;
+  fill: rgba(90, 103, 122, 0.9);
+}
+
+.cad-title {
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px dashed rgba(43, 108, 201, 0.35);
-  animation: pulse 7s ease-in-out infinite;
+  left: 24px;
+  bottom: 16px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gray-600);
+  opacity: 0;
+  filter: blur(6px);
+  animation: cad-title 0.6s ease forwards;
+  animation-delay: 2.4s;
 }
 
-.layer-2 { transform: scale(0.75); animation-delay: 1.6s; }
-.layer-3 { transform: scale(0.55); animation-delay: 3.2s; }
+.cad-title-line {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
 
-.orbit {
+.cad-title-line::after {
+  content: "";
   position: absolute;
-  inset: 24px;
-  border-radius: 50%;
-  border: 1px solid rgba(123, 188, 241, 0.45);
-  animation: rotate 22s linear infinite;
+  left: 0;
+  bottom: 0;
+  width: 58%;
+  height: 2px;
+  background: rgba(31, 95, 191, 0.45);
 }
 
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes cad-grid {
+  to { opacity: 1; }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.7; }
+@keyframes cad-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes cad-detail {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cad-title {
+  to { opacity: 1; filter: blur(0); }
 }
 
 .hud-stats {
@@ -419,6 +540,10 @@ h3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
+}
+
+.card-wide {
+  grid-column: 1 / -1;
 }
 
 .card {
@@ -574,6 +699,16 @@ h3 {
   gap: 12px;
 }
 
+.vacancy-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(31, 95, 191, 0.2);
+  margin-bottom: 12px;
+  background: var(--white);
+}
+
 .progress-step {
   padding: 12px 16px;
   border-radius: var(--radius-sm);
@@ -690,7 +825,7 @@ input:focus, textarea:focus {
 @media (max-width: 900px) {
   .site-nav {
     position: fixed;
-    inset: 80px 16px auto 16px;
+    inset: 120px 16px auto 16px;
     flex-direction: column;
     background: var(--panel-strong);
     padding: 18px;
@@ -718,7 +853,34 @@ input:focus, textarea:focus {
     padding-top: 90px;
   }
 
+  .logo-star {
+    animation-duration: 36s;
+  }
+
+  .logo-star svg {
+    animation-duration: 8s;
+  }
+
   .footer-bottom {
     flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-star,
+  .logo-star svg {
+    animation: none;
+  }
+
+  .cad-grid path,
+  .cad-axes path,
+  .cad-contour path,
+  .cad-detail,
+  .cad-title {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    stroke-dashoffset: 0;
   }
 }
