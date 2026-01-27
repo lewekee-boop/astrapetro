@@ -9,26 +9,24 @@ if (canvas && !prefersReducedMotion) {
   const resize = () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-    nodes = Array.from({ length: Math.floor(width / 120) }, () => ({
+    nodes = Array.from({ length: Math.floor(width / 160) }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: 1 + Math.random() * 2,
-      s: 0.2 + Math.random() * 0.6,
+      r: 1 + Math.random() * 1.5,
+      s: 0.15 + Math.random() * 0.4,
     }));
   };
 
-  const drawRings = (time) => {
-    const cx = width * 0.72;
-    const cy = height * 0.32;
-    const base = Math.min(width, height) * 0.08;
-
-    for (let i = 0; i < 3; i++) {
-      ctx.beginPath();
-      ctx.strokeStyle = `rgba(99, 164, 255, ${0.25 - i * 0.05})`;
-      ctx.lineWidth = 1;
-      ctx.arc(cx, cy, base + i * 26 + Math.sin(time / 1800 + i) * 6, 0, Math.PI * 2);
-      ctx.stroke();
+  const drawBlueprintLines = (time) => {
+    const offset = (time / 80) % 80;
+    ctx.strokeStyle = 'rgba(31, 95, 191, 0.08)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let x = -80; x < width + 80; x += 120) {
+      ctx.moveTo(x + offset, height * 0.2);
+      ctx.lineTo(x + offset + 80, height * 0.55);
     }
+    ctx.stroke();
   };
 
   const drawNodes = () => {
@@ -37,29 +35,30 @@ if (canvas && !prefersReducedMotion) {
       if (node.x > width + 20) node.x = -20;
 
       ctx.beginPath();
-      ctx.fillStyle = 'rgba(127, 212, 255, 0.4)';
+      ctx.fillStyle = 'rgba(43, 108, 201, 0.26)';
       ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
       ctx.fill();
     });
   };
 
-  const drawGridPulse = (time) => {
-    const pulse = (Math.sin(time / 1400) + 1) / 2;
-    ctx.strokeStyle = `rgba(63, 124, 255, ${0.08 + pulse * 0.06})`;
-    ctx.lineWidth = 1;
+  const drawChartLine = (time) => {
+    ctx.strokeStyle = 'rgba(31, 95, 191, 0.18)';
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(width * 0.08, height * 0.76);
-    ctx.lineTo(width * 0.36, height * 0.76);
-    ctx.lineTo(width * 0.46, height * 0.64);
-    ctx.lineTo(width * 0.58, height * 0.64);
+    const baseY = height * 0.78;
+    ctx.moveTo(width * 0.08, baseY);
+    ctx.lineTo(width * 0.22, baseY - 18);
+    ctx.lineTo(width * 0.35, baseY - 10 - Math.sin(time / 1200) * 8);
+    ctx.lineTo(width * 0.5, baseY - 26);
+    ctx.lineTo(width * 0.62, baseY - 12);
     ctx.stroke();
   };
 
   const animate = (time) => {
     ctx.clearRect(0, 0, width, height);
     drawNodes();
-    drawRings(time);
-    drawGridPulse(time);
+    drawBlueprintLines(time);
+    drawChartLine(time);
     requestAnimationFrame(animate);
   };
 
