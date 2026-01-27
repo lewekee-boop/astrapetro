@@ -35,7 +35,7 @@ if (canvas && !prefersReducedMotion) {
       if (node.x > width + 20) node.x = -20;
 
       ctx.beginPath();
-      ctx.fillStyle = 'rgba(43, 108, 201, 0.26)';
+      ctx.fillStyle = 'rgba(43, 108, 201, 0.38)';
       ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
       ctx.fill();
     });
