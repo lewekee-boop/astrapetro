@@ -35,7 +35,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--gray-600);
-  font-size: 18px;
+  font-size: 20px;
   background: linear-gradient(180deg, #f9fbff 0%, #eef3fa 50%, #e7eef8 100%);
   min-height: 100vh;
   position: relative;
@@ -126,8 +126,8 @@ img {
 .logo-star svg {
   width: 100%;
   height: 100%;
-  fill: #ffffff;
-  stroke: rgba(31, 95, 191, 0.8);
+  fill: #4d8fe6;
+  stroke: rgba(31, 95, 191, 0.9);
   stroke-width: 2;
   animation: pulse-soft 6s ease-in-out infinite;
   transition: filter 220ms ease;
@@ -398,6 +398,26 @@ h3 {
 .cad-svg {
   width: 100%;
   height: 100%;
+  display: block;
+}
+
+.cad-svg path {
+  fill: none;
+}
+
+.cad-anim::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.65);
+  z-index: 0;
+}
+
+.cad-svg,
+.cad-title {
+  position: relative;
+  z-index: 1;
 }
 
 .cad-grid path {
@@ -450,7 +470,7 @@ h3 {
 
 .cad-detail text {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 13px;
   fill: rgba(90, 103, 122, 0.9);
 }
 
