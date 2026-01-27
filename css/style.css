@@ -57,31 +57,9 @@ img {
   margin: 0 auto;
 }
 
-.bg-grid {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(43, 108, 201, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(43, 108, 201, 0.08) 1px, transparent 1px);
-  background-size: 72px 72px;
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 0;
-}
-
+.bg-grid,
 .scanline {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(31, 95, 191, 0.06) 50%, transparent 100%);
-  animation: scan 14s linear infinite;
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+  display: none;
 }
 
 .hud-canvas {
@@ -115,8 +93,8 @@ img {
 }
 
 .logo-star {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -126,11 +104,27 @@ img {
 .logo-star svg {
   width: 100%;
   height: 100%;
-  fill: #4d8fe6;
-  stroke: rgba(31, 95, 191, 0.9);
-  stroke-width: 2;
+  overflow: visible;
   animation: pulse-soft 6s ease-in-out infinite;
   transition: filter 220ms ease;
+}
+
+.logo-star .star-burst {
+  fill: rgba(90, 103, 122, 0.18);
+  opacity: 0.65;
+  transition: opacity 220ms ease;
+}
+
+.logo-star .star-arm {
+  fill: url(#starOuter);
+  stroke: rgba(31, 95, 191, 0.8);
+  stroke-width: 1.4;
+}
+
+.logo-star .star-core {
+  fill: url(#starInner);
+  stroke: rgba(31, 95, 191, 0.6);
+  stroke-width: 1;
 }
 
 .logo:hover .logo-star {
@@ -140,6 +134,10 @@ img {
 .logo:hover .logo-star svg {
   animation-duration: 3.5s;
   filter: drop-shadow(0 0 6px rgba(31, 95, 191, 0.55));
+}
+
+.logo:hover .logo-star .star-burst {
+  opacity: 0.9;
 }
 
 .logo-star svg,
@@ -391,7 +389,7 @@ h3 {
 
 .cad-anim {
   position: relative;
-  height: 220px;
+  height: 440px;
   margin-bottom: 16px;
 }
 
