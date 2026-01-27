@@ -1,0 +1,137 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Астрапетролеум — Контакты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="contacts">
+  <canvas class="hud-canvas" id="hud" aria-hidden="true"></canvas>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img class="logo-img" src="assets/icons/logo.jpg" alt="Астрапетролеум" />
+        <span class="logo-text">Астрапетролеум</span>
+      </a>
+      <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="index.html" data-nav="home">Главная</a>
+        <a href="activities.html" data-nav="activities">Виды деятельности</a>
+        <a href="about.html" data-nav="about">О компании</a>
+        <a href="careers.html" data-nav="careers">Карьера</a>
+        <a href="contacts.html" data-nav="contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-compact">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Связь с проектной группой</p>
+          <h1>Контакты</h1>
+          <p class="lead">Оставьте запрос для инженерной консультации или проектной оценки.</p>
+        </div>
+        <div class="hero-panel">
+          <div class="hud-panel reveal">
+            <div class="hud-title">Каналы связи</div>
+            <div class="hud-stats">
+              <div>
+                <span>Режим</span>
+                <strong>Рабочее время</strong>
+              </div>
+              <div>
+                <span>Ответ</span>
+                <strong>1–2 дня</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <h2>Контактные данные</h2>
+          <p>Адрес: [заглушка]</p>
+          <p>Телефон: [заглушка]</p>
+          <p>Email: [заглушка]</p>
+          <p>Режим работы: [заглушка]</p>
+        </div>
+        <div class="contact-card">
+          <h2>Форма запроса</h2>
+          <form class="form">
+            <label>
+              Имя
+              <input type="text" placeholder="Имя" />
+            </label>
+            <label>
+              Компания
+              <input type="text" placeholder="Компания" />
+            </label>
+            <label>
+              Email
+              <input type="email" placeholder="email@company.ru" />
+            </label>
+            <label>
+              Сообщение
+              <textarea rows="4" placeholder="Опишите задачу"></textarea>
+            </label>
+            <button class="btn btn-primary" type="button">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <h2>Схема расположения</h2>
+          <p>Здесь будет карта или схема (пока пустая зона под ваш контент).</p>
+        </div>
+        <div class="map-placeholder">[место для карты]</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="logo-text">Астрапетролеум</div>
+        <p>Проектирование и сопровождение разработки нефтегазовых месторождений.</p>
+      </div>
+      <div>
+        <div class="footer-title">Разделы</div>
+        <a href="activities.html">Виды деятельности</a>
+        <a href="about.html">О компании</a>
+        <a href="careers.html">Карьера</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div>
+        <div class="footer-title">Контакты</div>
+        <p>Адрес: [заглушка]</p>
+        <p>Телефон: [заглушка]</p>
+        <p>Email: [заглушка]</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Астрапетролеум</span>
+      <span>Инженерная среда нового поколения</span>
+    </div>
+  </footer>
+
+  <script src="js/hud.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
