@@ -17,48 +17,21 @@ if (canvas && !prefersReducedMotion) {
     }));
   };
 
-  const drawBlueprintLines = (time) => {
-    const offset = (time / 80) % 80;
-    ctx.strokeStyle = 'rgba(31, 95, 191, 0.08)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (let x = -80; x < width + 80; x += 120) {
-      ctx.moveTo(x + offset, height * 0.2);
-      ctx.lineTo(x + offset + 80, height * 0.55);
-    }
-    ctx.stroke();
-  };
-
   const drawNodes = () => {
     nodes.forEach((node) => {
       node.x += node.s;
       if (node.x > width + 20) node.x = -20;
 
       ctx.beginPath();
-      ctx.fillStyle = 'rgba(43, 108, 201, 0.38)';
+      ctx.fillStyle = 'rgba(10, 36, 86, 0.6)';
       ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
       ctx.fill();
     });
   };
 
-  const drawChartLine = (time) => {
-    ctx.strokeStyle = 'rgba(31, 95, 191, 0.18)';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    const baseY = height * 0.78;
-    ctx.moveTo(width * 0.08, baseY);
-    ctx.lineTo(width * 0.22, baseY - 18);
-    ctx.lineTo(width * 0.35, baseY - 10 - Math.sin(time / 1200) * 8);
-    ctx.lineTo(width * 0.5, baseY - 26);
-    ctx.lineTo(width * 0.62, baseY - 12);
-    ctx.stroke();
-  };
-
   const animate = (time) => {
     ctx.clearRect(0, 0, width, height);
     drawNodes();
-    drawBlueprintLines(time);
-    drawChartLine(time);
     requestAnimationFrame(animate);
   };
 
