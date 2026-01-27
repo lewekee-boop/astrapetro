@@ -17,7 +17,11 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">
-        <img class="logo-img" src="assets/icons/logo.jpg" alt="Астрапетролеум" />
+        <span class="logo-star" aria-hidden="true">
+          <svg viewBox="0 0 100 100" role="presentation" focusable="false">
+            <polygon points="50,6 61,38 95,38 67,58 78,92 50,72 22,92 33,58 5,38 39,38" />
+          </svg>
+        </span>
         <span class="logo-text">Астрапетролеум</span>
       </a>
       <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
@@ -68,6 +72,7 @@
         <div class="cards">
           <article class="card">
             <h3>Инженер-проектировщик</h3>
+            <img class="vacancy-img" src="assets/img/vacancy-project.jpg" alt="Инженер-проектировщик" />
             <p>Промысловые схемы, технологические линии, расчет узлов подготовки.</p>
           </article>
           <article class="card">
@@ -76,6 +81,7 @@
           </article>
           <article class="card">
             <h3>Инженер-гидродинамик</h3>
+            <img class="vacancy-img" src="assets/img/vacancy-hydro.jpg" alt="Инженер-гидродинамик" />
             <p>Симуляция режимов добычи, анализ запасов, подбор сетки скважин.</p>
           </article>
         </div>
@@ -105,31 +111,6 @@
       </div>
     </section>
 
-    <section class="section reveal">
-      <div class="container">
-        <div class="section-head">
-          <h2>Отклик</h2>
-          <p>Контактная форма будет заполнена вашим текстом и данными.</p>
-        </div>
-        <form class="form">
-          <div class="form-row">
-            <label>
-              Имя
-              <input type="text" placeholder="Имя" />
-            </label>
-            <label>
-              Email
-              <input type="email" placeholder="email@company.ru" />
-            </label>
-          </div>
-          <label>
-            Сообщение
-            <textarea rows="4" placeholder="Коротко о вашем опыте"></textarea>
-          </label>
-          <button class="btn btn-primary" type="button">Отправить</button>
-        </form>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
@@ -162,4 +143,5 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
 
