@@ -2,6 +2,7 @@
   --bg-100: #f4f7fb;
   --bg-200: #e9eef6;
   --bg-300: #dde5f2;
+  --surface-bg: rgba(255, 255, 255, 0.84);
   --blue-600: #1f5fbf;
   --blue-500: #2b6cc9;
   --blue-400: #4d8fe6;
@@ -11,8 +12,8 @@
   --gray-500: #3b4554;
   --gray-400: #5a677a;
   --gray-300: #7d8aa1;
-  --panel: rgba(255, 255, 255, 0.78);
-  --panel-strong: rgba(255, 255, 255, 0.92);
+  --panel: var(--surface-bg);
+  --panel-strong: var(--surface-bg);
   --border: rgba(31, 95, 191, 0.2);
   --shadow: 0 18px 40px rgba(18, 32, 56, 0.12);
   --radius-lg: 18px;
@@ -261,7 +262,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--blue-500);
-  font-size: 0.9rem;
+  font-size: 1.02rem;
   margin-bottom: 12px;
 }
 
@@ -380,7 +381,7 @@ h3 {
 
 .hud-title {
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 1.02rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   margin-bottom: 16px;
@@ -408,7 +409,7 @@ h3 {
   position: absolute;
   inset: 14px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--surface-bg);
   z-index: 0;
 }
 
@@ -466,7 +467,8 @@ h3 {
 
 .cad-detail text {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 12px;
+  text-anchor: middle;
   fill: rgba(90, 103, 122, 0.9);
 }
 
@@ -484,7 +486,7 @@ h3 {
   min-height: 260px;
   border-radius: var(--radius-md);
   border: 1px dashed rgba(31, 95, 191, 0.35);
-  background: linear-gradient(135deg, rgba(43, 108, 201, 0.08), rgba(123, 188, 241, 0.1));
+  background: var(--surface-bg);
   display: grid;
   place-items: center;
   color: var(--gray-400);
@@ -502,13 +504,15 @@ h3 {
 
 .cad-title {
   position: absolute;
-  left: 24px;
+  left: 50%;
   bottom: 16px;
+  transform: translateX(-50%);
   font-family: var(--font-display);
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--gray-600);
+  text-align: center;
   opacity: 0;
   filter: blur(6px);
   animation: cad-title 0.6s ease forwards;
@@ -524,10 +528,11 @@ h3 {
 .cad-title-line::after {
   content: "";
   position: absolute;
-  left: 0;
+  left: 50%;
   bottom: 0;
   width: 58%;
   height: 2px;
+  transform: translateX(-50%);
   background: rgba(31, 95, 191, 0.45);
 }
 
@@ -654,7 +659,7 @@ h3 {
 .panel-title {
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: 0.72rem;
+  font-size: 0.84rem;
   color: var(--blue-500);
   margin-bottom: 18px;
 }
@@ -662,6 +667,7 @@ h3 {
 .flow {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -692,7 +698,7 @@ h3 {
   min-height: 56px;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(31, 95, 191, 0.25);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--surface-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -763,7 +769,7 @@ h3 {
   padding: 12px 16px;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(31, 95, 191, 0.3);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--surface-bg);
   color: var(--gray-500);
 }
 
@@ -819,13 +825,13 @@ input:focus, textarea:focus {
   padding: 60px;
   text-align: center;
   color: var(--gray-400);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--surface-bg);
 }
 
 .site-footer {
   padding: 60px 0 30px;
   border-top: 1px solid rgba(31, 95, 191, 0.2);
-  background: linear-gradient(180deg, rgba(224, 232, 244, 0.96), rgba(214, 224, 238, 0.98));
+  background: linear-gradient(180deg, rgba(200, 213, 229, 0.98), rgba(179, 195, 216, 0.98));
   position: relative;
   z-index: 2;
 }
@@ -839,7 +845,7 @@ input:focus, textarea:focus {
 .footer-title {
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 0.7rem;
+  font-size: 0.82rem;
   color: var(--blue-500);
   margin-bottom: 10px;
 }
@@ -859,6 +865,21 @@ input:focus, textarea:focus {
   gap: 16px;
   color: var(--gray-500);
   font-size: 0.8rem;
+}
+
+.hud-panel,
+.panel {
+  text-align: center;
+}
+
+.hud-stats {
+  justify-items: center;
+}
+
+.hud-stats > div {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
 }
 
 .reveal {
@@ -932,6 +953,10 @@ input:focus, textarea:focus {
     transform: none;
     filter: none;
     stroke-dashoffset: 0;
+  }
+
+  .cad-title {
+    transform: translateX(-50%);
   }
 }
 
