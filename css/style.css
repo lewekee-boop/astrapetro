@@ -466,10 +466,38 @@ h3 {
   fill: rgba(31, 95, 191, 0.5);
 }
 
-.cad-detail text {
-  font-family: var(--font-body);
-  font-size: 13px;
-  fill: rgba(90, 103, 122, 0.9);
+
+
+.cad-detail .cad-fault {
+  stroke-dasharray: 7 5;
+  stroke-width: 1.2;
+  opacity: 0.85;
+}
+
+.team-photo-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.team-photo-slot {
+  min-height: 260px;
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(31, 95, 191, 0.35);
+  background: linear-gradient(135deg, rgba(43, 108, 201, 0.08), rgba(123, 188, 241, 0.1));
+  display: grid;
+  place-items: center;
+  color: var(--gray-400);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.team-photo-slot span {
+  padding: 10px 14px;
+  border: 1px solid rgba(31, 95, 191, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .cad-title {
@@ -902,3 +930,4 @@ input:focus, textarea:focus {
     stroke-dashoffset: 0;
   }
 }
+
