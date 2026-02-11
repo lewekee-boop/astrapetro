@@ -18,27 +18,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">
-        <span class="logo-star" aria-hidden="true">
-          <svg viewBox="0 0 120 120" role="presentation" focusable="false">
-            <defs>
-              <linearGradient id="starOuter" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#1f5fbf" />
-                <stop offset="100%" stop-color="#4d8fe6" />
-              </linearGradient>
-              <linearGradient id="starInner" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#cfe6ff" />
-                <stop offset="100%" stop-color="#7bbcf1" />
-              </linearGradient>
-            </defs>
-            <path class="star-burst" d="M60 8l6 16 14-8-6 16 18 4-14 9 14 9-18 4 6 16-14-8-6 16-6-16-14 8 6-16-18-4 14-9-14-9 18-4-6-16 14 8z" />
-            <path class="star-arm" d="M60 10l10 28-10 14-10-14z" />
-            <path class="star-arm" d="M60 110l10-28-10-14-10 14z" />
-            <path class="star-arm" d="M10 60l28-10 14 10-14 10z" />
-            <path class="star-arm" d="M110 60l-28-10-14 10 14 10z" />
-            <path class="star-core" d="M60 44l10 16-10 16-10-16z" />
-            <path class="star-core" d="M44 60l16-10 16 10-16 10z" />
-          </svg>
-        </span>
+        <img class="logo-img" src="assets/img/logo.jpg" alt="Астрапетролеум" />
         <span class="logo-text">Астрапетролеум</span>
       </a>
       <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
@@ -89,20 +69,22 @@
                   <path d="M60 240V50" />
                 </g>
                 <g class="cad-contour">
-                  <path class="cad-rect" d="M120 90H390V200H120Z" />
-                  <path class="cad-inner" d="M160 120H350V170H160Z" />
-                  <path class="cad-inner" d="M220 90V200" />
+                  <path class="cad-oval" d="M72 166C76 122 116 90 184 74C253 58 332 64 390 92C446 119 459 166 430 203C399 243 333 264 255 260C178 256 111 233 84 201C74 188 70 177 72 166Z" />
+                  <path class="cad-inner" d="M110 165C116 134 147 110 197 96C248 83 305 86 347 105C388 124 398 157 376 184C354 212 306 228 250 229C195 229 145 214 121 191C112 183 108 174 110 165Z" />
+                  <path class="cad-inner" d="M148 163C153 143 175 127 211 116C248 105 288 106 317 120C346 134 353 154 338 173C321 194 287 206 246 208C205 210 171 200 155 186C149 180 146 172 148 163Z" />
+                  <path class="cad-inner" d="M184 160C188 149 201 139 222 132C244 125 268 124 286 131C304 138 309 148 300 160C290 174 270 183 246 185C222 187 202 181 192 173C186 168 183 164 184 160Z" />
                 </g>
                 <g class="cad-detail">
-                  <path d="M190 90V210" />
-                  <path d="M260 70V210" />
-                  <path d="M330 90V210" />
-                  <circle cx="190" cy="90" r="4" />
-                  <circle cx="260" cy="70" r="4" />
-                  <circle cx="330" cy="90" r="4" />
-                  <text x="170" y="230">Скв. A-12</text>
-                  <text x="240" y="230">Скв. B-07</text>
-                  <text x="310" y="230">Скв. C-04</text>
+                  <path d="M134 137L171 174" />
+                  <path d="M226 112L214 188" />
+                  <path d="M326 133L274 192" />
+                  <path class="cad-fault" d="M101 201C148 188 192 183 231 185C283 188 333 201 382 217" />
+                  <circle cx="134" cy="137" r="4" />
+                  <circle cx="226" cy="112" r="4" />
+                  <circle cx="326" cy="133" r="4" />
+                  <text x="112" y="238">Скв. A-12</text>
+                  <text x="198" y="238">Скв. B-07</text>
+                  <text x="286" y="238">Скв. C-04</text>
                 </g>
               </svg>
               <div class="cad-title">
@@ -162,26 +144,7 @@
         </div>
       </div>
     </section>
-
-    <section class="section reveal">
-      <div class="container">
-        <div class="section-head">
-          <h2>Навигация по сайту</h2>
-          <p>Короткий маршрут для понимания нашей инженерной компетенции.</p>
-        </div>
-        <div class="cards">
-          <div class="card card-wide">
-            <p>Системный подход к инженерным решениям, технологическим схемам и моделированию режимов добычи. Тон — инженерный, инструменты — точные.</p>
-          </div>
-          <article class="card">
-            <h3>Карьера</h3>
-            <p>Профили специалистов, инженерные практики и развитие компетенций.</p>
-            <a class="link" href="careers.html">Перейти</a>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
+</main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -213,6 +176,9 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
+
+
 
 
 
