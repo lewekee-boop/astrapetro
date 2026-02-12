@@ -39,10 +39,21 @@
   --radius-md: 12px;
   --radius-sm: 10px;
   --transition: 220ms ease;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  min-width: 0;
 }
 
 html {
@@ -61,6 +72,11 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -84,15 +100,22 @@ img {
   height: auto;
 }
 
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol {
+  margin: 0;
+}
+
 p {
-  margin: 0 0 1rem;
   font-size: var(--text-base);
   line-height: var(--lh-body);
 }
 
 .container {
-  width: min(1200px, 90vw);
+  width: 100%;
+  max-width: 1160px;
   margin: 0 auto;
+  padding-inline: clamp(var(--space-4), 3vw, var(--space-5));
 }
 
 .bg-grid,
@@ -120,8 +143,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 32px 0;
-  gap: 24px;
+  padding-block: var(--space-5);
+  gap: var(--space-5);
 }
 
 .logo {
@@ -231,7 +254,7 @@ p {
 
 .site-nav {
   display: flex;
-  gap: 20px;
+  gap: var(--space-5);
   font-size: var(--text-sm);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-nav);
@@ -242,7 +265,7 @@ p {
 .site-nav a,
 .nav-link {
   position: relative;
-  padding-bottom: 4px;
+  padding-bottom: var(--space-1);
   color: inherit;
   transition: color var(--transition);
 }
@@ -291,20 +314,20 @@ p {
 }
 
 .hero {
-  padding: 110px 0 70px;
+  padding-block: clamp(56px, 7vw, 72px);
   position: relative;
   z-index: 2;
 }
 
 .hero-compact {
-  padding: 90px 0 55px;
+  padding-block: clamp(56px, 7vw, 72px);
 }
 
 .hero-grid {
   display: grid;
-  gap: 40px;
+  gap: var(--space-6);
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
 }
 
 .eyebrow,
@@ -315,7 +338,7 @@ p {
   font-size: var(--text-sm);
   line-height: var(--lh-tight);
   font-weight: var(--weight-500);
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 h1, h2, h3 {
@@ -329,17 +352,17 @@ h1, h2, h3 {
 
 h1 {
   font-size: clamp(var(--text-2xl), 4.4vw, 3.4rem);
-  margin: 0 0 16px;
+  margin: 0;
 }
 
 h2 {
   font-size: clamp(1.5rem, 3.1vw, 2.4rem);
-  margin: 0 0 12px;
+  margin: 0;
 }
 
 h3 {
   font-size: var(--text-lg);
-  margin: 0 0 10px;
+  margin: 0;
 }
 
 .lead {
@@ -355,8 +378,9 @@ h3 {
 
 .hero-actions {
   display: flex;
-  gap: 16px;
-  margin-top: 26px;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -399,9 +423,9 @@ h3 {
 
 .hero-meta {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 30px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
 }
 
 .meta-card {
@@ -427,7 +451,7 @@ h3 {
 
 .hero-panel {
   display: grid;
-  gap: 20px;
+  gap: var(--space-5);
 }
 
 .hud-panel {
@@ -465,8 +489,8 @@ h3 {
 
 .cad-anim {
   position: relative;
-  height: 440px;
-  margin-bottom: 16px;
+  height: clamp(280px, 48vw, 440px);
+  margin-bottom: var(--space-4);
 }
 
 .cad-svg {
@@ -589,7 +613,7 @@ svg text {
 .cad-title {
   position: absolute;
   left: 50%;
-  bottom: 16px;
+  bottom: var(--space-4);
   transform: translateX(-50%);
   font-family: var(--font-display);
   font-size: var(--text-sm);
@@ -608,7 +632,7 @@ svg text {
 .cad-title-line {
   position: relative;
   display: inline-block;
-  padding-bottom: 6px;
+  padding-bottom: var(--space-2);
 }
 
 .cad-title-line::after {
@@ -640,7 +664,7 @@ svg text {
 
 .hud-stats {
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
   font-size: var(--text-sm);
   line-height: var(--lh-body);
   color: var(--gray-500);
@@ -666,20 +690,34 @@ svg text {
 }
 
 .section {
-  padding: 75px 0;
+  padding-block: clamp(56px, 7vw, 72px);
   position: relative;
   z-index: 2;
 }
 
+.hero > .container,
+.section > .container {
+  display: grid;
+  gap: var(--space-6);
+}
+
 .section-head {
   max-width: 700px;
-  margin-bottom: 34px;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.hero-copy {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: var(--space-5);
+  align-items: stretch;
 }
 
 .card-wide {
@@ -687,11 +725,14 @@ svg text {
 }
 
 .card {
-  padding: 24px;
+  padding: var(--space-5);
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow);
+  display: grid;
+  gap: var(--space-3);
+  height: 100%;
 }
 
 .card p {
@@ -709,7 +750,7 @@ svg text {
 
 .link {
   display: inline-flex;
-  margin-top: 16px;
+  margin-top: var(--space-2);
   color: var(--blue-500);
   font-size: var(--text-sm);
   font-weight: var(--weight-500);
@@ -722,21 +763,28 @@ svg text {
 
 .split {
   display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
+}
+
+.split > div {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
 }
 
 .bullets {
   list-style: none;
   padding: 0;
-  margin: 22px 0 0;
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
 }
 
 .bullets li {
   position: relative;
-  padding-left: 20px;
-  margin-bottom: 12px;
+  padding-left: var(--space-5);
   color: var(--gray-400);
 }
 
@@ -751,8 +799,10 @@ svg text {
   background: var(--panel-strong);
   border: 1px solid rgba(31, 95, 191, 0.25);
   border-radius: var(--radius-lg);
-  padding: 26px;
+  padding: var(--space-6);
   box-shadow: var(--shadow);
+  display: grid;
+  gap: var(--space-4);
 }
 
 .panel-title {
@@ -762,7 +812,7 @@ svg text {
   line-height: var(--lh-tight);
   font-weight: var(--weight-500);
   color: var(--blue-500);
-  margin-bottom: 18px;
+  margin-bottom: 0;
 }
 
 .flow {
@@ -770,7 +820,7 @@ svg text {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .flow-node {
@@ -793,7 +843,7 @@ svg text {
 .infra-map {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 14px;
+  gap: var(--space-3);
 }
 
 .infra-node {
@@ -811,12 +861,12 @@ svg text {
 
 .competency {
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .competency-line {
   display: grid;
-  gap: 8px;
+  gap: var(--space-2);
   font-size: var(--text-sm);
   line-height: var(--lh-body);
 }
@@ -835,14 +885,14 @@ svg text {
 
 .timeline {
   display: grid;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .timeline-item {
   display: grid;
   grid-template-columns: 60px 1fr;
-  gap: 18px;
-  padding: 18px;
+  gap: var(--space-4);
+  padding: var(--space-5);
   background: var(--panel);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
@@ -858,7 +908,7 @@ svg text {
 
 .progress-map {
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .vacancy-img {
@@ -881,18 +931,18 @@ svg text {
 
 .form {
   display: grid;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .form-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 label {
   display: grid;
-  gap: 8px;
+  gap: var(--space-2);
   font-size: var(--text-sm);
   line-height: var(--lh-body);
   color: var(--gray-400);
@@ -917,28 +967,30 @@ input:focus, textarea:focus {
 
 .contact-grid {
   display: grid;
-  gap: 24px;
+  gap: var(--space-5);
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .contact-card {
-  padding: 24px;
+  padding: var(--space-5);
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
+  display: grid;
+  gap: var(--space-3);
 }
 
 .map-placeholder {
   border: 1px dashed rgba(31, 95, 191, 0.4);
   border-radius: var(--radius-lg);
-  padding: 60px;
+  padding: var(--space-8);
   text-align: center;
   color: var(--gray-400);
   background: var(--surface-bg);
 }
 
 .site-footer {
-  padding: 60px 0 30px;
+  padding-block: clamp(56px, 7vw, 72px) var(--space-6);
   border-top: 1px solid rgba(31, 95, 191, 0.2);
   background: linear-gradient(180deg, rgba(200, 213, 229, 0.98), rgba(179, 195, 216, 0.98));
   position: relative;
@@ -947,8 +999,14 @@ input:focus, textarea:focus {
 
 .footer-inner {
   display: grid;
-  gap: 24px;
+  gap: var(--space-5);
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.footer-inner > div {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
 }
 
 .footer-title {
@@ -958,7 +1016,7 @@ input:focus, textarea:focus {
   line-height: var(--lh-tight);
   font-weight: var(--weight-500);
   color: var(--blue-500);
-  margin-bottom: 10px;
+  margin-bottom: var(--space-2);
 }
 
 .site-footer a,
@@ -966,16 +1024,16 @@ input:focus, textarea:focus {
   color: var(--gray-400);
   font-size: var(--text-sm);
   line-height: var(--lh-body);
-  margin: 6px 0;
+  margin: 0;
 }
 
 .footer-bottom {
-  margin-top: 26px;
-  padding-top: 18px;
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
   border-top: 1px solid rgba(31, 95, 191, 0.28);
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--space-4);
   color: var(--gray-500);
   font-size: var(--text-sm);
   line-height: var(--lh-body);
@@ -1008,6 +1066,19 @@ input:focus, textarea:focus {
 }
 
 @media (max-width: 900px) {
+  .header-inner {
+    padding-block: var(--space-4);
+  }
+
+  .hero-grid,
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-meta {
+    grid-template-columns: 1fr;
+  }
+
   .site-nav {
     position: fixed;
     inset: 120px 16px auto 16px;
@@ -1034,8 +1105,25 @@ input:focus, textarea:focus {
 }
 
 @media (max-width: 700px) {
-  .hero {
-    padding-top: 90px;
+  .hero,
+  .hero-compact,
+  .section {
+    padding-block: 56px;
+  }
+
+  .cards,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .panel,
+  .contact-card {
+    padding: var(--space-4);
+  }
+
+  .map-placeholder {
+    padding: var(--space-6);
   }
 
   .logo-star {
@@ -1048,6 +1136,28 @@ input:focus, textarea:focus {
 
   .footer-bottom {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .header-inner {
+    gap: var(--space-3);
+  }
+
+  .hero-actions {
+    gap: var(--space-3);
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
   }
 }
 
