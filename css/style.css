@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg-100: #f4f7fb;
   --bg-200: #e9eef6;
   --bg-300: #dde5f2;
@@ -581,7 +581,8 @@ svg text {
 
 
 
-
+
+
 
 .team-photo-panel {
   display: flex;
