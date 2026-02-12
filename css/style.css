@@ -551,6 +551,11 @@ svg text {
   animation-delay: 0.6s;
 }
 
+.cad-contour .cad-oval {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+}
+
 .cad-contour .cad-inner {
   stroke-width: 1;
   animation-delay: 0.85s;
@@ -761,38 +766,21 @@ svg text {
   background: transparent;
 }
 
-.aa-slot-section {
-  padding-top: 0;
-}
-
-.aa-slot {
-  border: 1px solid rgba(11, 42, 91, 0.12);
-  border-radius: var(--radius-lg);
-  background: #ffffff;
-  overflow: hidden;
-}
-
-.aa-slot img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
 .geo-section {
   background: #edf1fa;
 }
 
 .geo-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-columns: minmax(320px, 0.84fr) minmax(0, 1.16fr);
   gap: clamp(var(--space-6), 4vw, var(--space-8));
-  align-items: start;
+  align-items: center;
 }
 
 .geo-map-wrap {
   display: grid;
   gap: var(--space-4);
+  max-width: 560px;
 }
 
 .geo-map-shell {
@@ -807,7 +795,7 @@ svg text {
 .geo-map-object {
   display: block;
   width: 100%;
-  min-height: 380px;
+  height: clamp(260px, 31vw, 360px);
 }
 
 .geo-legend {
@@ -842,6 +830,7 @@ svg text {
   display: grid;
   gap: var(--space-4);
   color: inherit;
+  align-content: start;
 }
 
 .geo-content h2 {
@@ -892,6 +881,29 @@ svg text {
   color: var(--blue-500);
   font-size: 1rem;
   font-weight: var(--weight-600);
+}
+
+.geo-tooltip {
+  position: fixed;
+  z-index: 50;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(11, 42, 91, 0.2);
+  background: #ffffff;
+  color: var(--gray-600);
+  font-size: var(--text-xs);
+  line-height: var(--lh-tight);
+  font-weight: var(--weight-500);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.geo-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .split {
