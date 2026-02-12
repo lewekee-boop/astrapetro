@@ -55,6 +55,43 @@ if (rfMapObject) {
     KL: 'Калмыкия'
   };
 
+  const tooltip = document.createElement('div');
+  tooltip.className = 'geo-tooltip';
+  document.body.appendChild(tooltip);
+
+  const getTooltipCoords = (event) => {
+    const rect = rfMapObject.getBoundingClientRect();
+    let x = event.clientX;
+    let y = event.clientY;
+
+    // In embedded SVG some browsers report coords local to the object viewport.
+    if (x <= rect.width + 2 && y <= rect.height + 2) {
+      x += rect.left;
+      y += rect.top;
+    }
+
+    return { x, y };
+  };
+
+  const showTooltip = (text, event) => {
+    tooltip.textContent = text;
+    const { x, y } = getTooltipCoords(event);
+    tooltip.style.left = `${x + 14}px`;
+    tooltip.style.top = `${y + 14}px`;
+    tooltip.classList.add('is-visible');
+  };
+
+  const moveTooltip = (event) => {
+    if (!tooltip.classList.contains('is-visible')) return;
+    const { x, y } = getTooltipCoords(event);
+    tooltip.style.left = `${x + 14}px`;
+    tooltip.style.top = `${y + 14}px`;
+  };
+
+  const hideTooltip = () => {
+    tooltip.classList.remove('is-visible');
+  };
+
   const setupMapRegions = () => {
     const svgDoc = rfMapObject.contentDocument;
     if (!svgDoc) return;
@@ -69,9 +106,15 @@ if (rfMapObject) {
         title.textContent = name;
         regionNode.prepend(title);
       }
+
+      regionNode.addEventListener('mouseenter', (event) => showTooltip(name, event));
+      regionNode.addEventListener('mousemove', moveTooltip);
+      regionNode.addEventListener('mouseleave', hideTooltip);
     });
   };
 
   rfMapObject.addEventListener('load', setupMapRegions);
   setupMapRegions();
+
+  window.addEventListener('scroll', hideTooltip, { passive: true });
 }
