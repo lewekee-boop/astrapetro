@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -126,33 +126,15 @@
     <section class="section reveal geo-section" id="geography">
       <div class="container geo-grid">
         <div class="geo-map-wrap" aria-label="Карта географии присутствия">
-          <svg class="geo-map" viewBox="0 0 760 420" role="img" aria-labelledby="geoTitle geoDesc">
-            <title id="geoTitle">География присутствия в регионах России</title>
-            <desc id="geoDesc">Регионы присутствия: ЯНАО, ХМАО, Тюменская область, Томская область, Оренбург, Калмыкия.</desc>
-
-            <path class="rf-silhouette" d="M56 212L82 176L128 166L172 132L242 118L308 128L378 110L454 122L524 106L612 132L678 164L704 198L682 238L642 262L596 266L552 292L488 304L418 298L354 320L280 312L230 290L176 296L128 274L94 240Z" />
-
-            <g class="rf-regions">
-              <polygon class="region region-yanao" points="386,150 426,144 454,162 438,192 398,196 376,174">
-                <title>ЯНАО</title>
-              </polygon>
-              <polygon class="region region-khmao" points="352,176 388,168 402,196 376,220 334,216 326,192">
-                <title>ХМАО</title>
-              </polygon>
-              <polygon class="region region-tyumen" points="390,198 434,194 454,222 430,246 384,244 370,220">
-                <title>Тюменская область</title>
-              </polygon>
-              <polygon class="region region-tomsk" points="456,188 496,182 518,206 502,234 458,238 444,214">
-                <title>Томская область</title>
-              </polygon>
-              <polygon class="region region-orenburg" points="286,242 320,234 338,258 322,282 282,284 266,262">
-                <title>Оренбург</title>
-              </polygon>
-              <polygon class="region region-kalmykia" points="252,272 286,270 302,294 286,316 248,314 234,292">
-                <title>Калмыкия</title>
-              </polygon>
-            </g>
-          </svg>
+          <div class="geo-map-shell">
+            <object
+              id="rf-map"
+              class="geo-map-object"
+              type="image/svg+xml"
+              data="assets/img/russia-subjects.svg"
+              aria-label="Карта Российской Федерации с регионами присутствия"
+            ></object>
+          </div>
           <ul class="geo-legend" aria-label="Список регионов присутствия">
             <li>ЯНАО</li>
             <li>ХМАО</li>
@@ -227,7 +209,6 @@
   <script src="js/main.js"></script>
 </body>
 </html>
-
 
 
 
