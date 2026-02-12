@@ -43,3 +43,35 @@ window.addEventListener('keydown', (event) => {
     navToggle?.setAttribute('aria-expanded', 'false');
   }
 });
+
+const rfMapObject = document.getElementById('rf-map');
+if (rfMapObject) {
+  const regionNames = {
+    YAN: 'ЯНАО',
+    KHM: 'ХМАО',
+    TYU: 'Тюменская область',
+    TOM: 'Томская область',
+    ORE: 'Оренбург',
+    KL: 'Калмыкия'
+  };
+
+  const setupMapRegions = () => {
+    const svgDoc = rfMapObject.contentDocument;
+    if (!svgDoc) return;
+
+    Object.entries(regionNames).forEach(([id, name]) => {
+      const regionNode = svgDoc.getElementById(id);
+      if (!regionNode) return;
+
+      regionNode.setAttribute('aria-label', name);
+      if (!regionNode.querySelector('title')) {
+        const title = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'title');
+        title.textContent = name;
+        regionNode.prepend(title);
+      }
+    });
+  };
+
+  rfMapObject.addEventListener('load', setupMapRegions);
+  setupMapRegions();
+}
