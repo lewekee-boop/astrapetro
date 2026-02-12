@@ -1,0 +1,83 @@
+id="MUR" class="oblast"/>
+id="PSK" class="oblast"/>
+id="SMO" class="oblast"/>
+id="BRY" class="oblast"/>
+id="KRS" class="oblast"/>
+id="BEL" class="oblast"/>
+id="VOR" class="oblast"/>
+id="KC" class="republic"/>
+id="SE" class="republic"/>
+id="IN" class="republic"/>
+id="DA" class="republic"/>
+id="KL" class="republic"/>
+id="ORE" class="oblast"/>
+id="CHE" class="oblast"/>
+id="OMS" class="oblast"/>
+id="NVS" class="oblast"/>
+id="ALT" class="krai"/>
+id="AL" class="republic"/>
+id="TY" class="republic"/>
+id="AMU" class="oblast"/>
+id="YEV" class="autoOblast"/>
+id="PRI" class="krai"/>
+id="MAG" class="oblast"/>
+<g id="ARK" class="oblast">
+<g id="SAK" class="oblast">
+<g id="KAM" class="krai">
+<g id="CHU" class="autoOkrug">
+id="KGD" class="oblast"/>
+id="SPE" class="federal"/>
+id="KLU" class="oblast"/>
+id="NGR" class="oblast"/>
+id="TVE" class="oblast"/>
+id="MOS" class="oblast"/>
+id="MOW" class="federal"/>
+<g id="NEN" class="autoOkrug">
+<g id="YAN" class="autoOkrug">
+<g id="KHA" class="krai">
+id="KDA" class="krai"/>
+id="STA" class="krai"/>
+id="CE" class="republic"/>
+id="KB" class="republic"/>
+id="VGG" class="oblast"/>
+id="ROS" class="oblast"/>
+id="AST" class="oblast"/>
+id="ORL" class="oblast"/>
+id="LIP" class="oblast"/>
+id="TUL" class="oblast"/>
+id="RYA" class="oblast"/>
+id="TAM" class="oblast"/>
+id="MO" class="republic"/>
+id="PNZ" class="oblast"/>
+id="SAR" class="oblast"/>
+id="ULY" class="oblast"/>
+id="SAM" class="oblast"/>
+id="KGN" class="oblast"/>
+id="BA" class="republic"/>
+id="VLG" class="oblast"/>
+id="YAR" class="oblast"/>
+id="KOS" class="oblast"/>
+id="IVA" class="oblast"/>
+id="VLA" class="oblast"/>
+id="NIZ" class="oblast"/>
+id="CU" class="republic"/>
+id="KIR" class="oblast"/>
+id="ME" class="republic"/>
+id="TA" class="republic"/>
+id="UD" class="republic"/>
+id="KO" class="republic"/>
+id="PER" class="krai"/>
+id="BU" class="republic"/>
+id="ZAB" class="krai"/>
+<g id="IRK" class="oblast">
+id="TYU" class="oblast"/>
+id="SVE" class="oblast"/>
+id="KHM" class="autoOkrug"/>
+<g id="KYA" class="krai">
+id="TOM" class="oblast"/>
+id="KEM" class="oblast"/>
+id="KK" class="republic"/>
+id="AD" class="republic"/>
+<g id="SA" class="republic">
+id="LEN" class="oblast"/>
+id="KR" class="republic"/>
