@@ -330,6 +330,10 @@ p {
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
 }
 
+body[data-page="home"] .hero-grid {
+  align-items: stretch;
+}
+
 .eyebrow,
 .kicker {
   text-transform: uppercase;
@@ -454,6 +458,11 @@ h3 {
   gap: var(--space-5);
 }
 
+body[data-page="home"] .hero-panel,
+body[data-page="home"] .hero-panel .hud-panel {
+  height: 100%;
+}
+
 .hud-panel {
   background: var(--panel-strong);
   border-radius: var(--radius-lg);
@@ -491,6 +500,12 @@ h3 {
   position: relative;
   height: clamp(280px, 48vw, 440px);
   margin-bottom: var(--space-4);
+}
+
+body[data-page="home"] .cad-anim {
+  height: 100%;
+  min-height: clamp(380px, 47vw, 560px);
+  margin-bottom: 0;
 }
 
 .cad-svg {
@@ -774,13 +789,15 @@ svg text {
   display: grid;
   grid-template-columns: minmax(320px, 0.84fr) minmax(0, 1.16fr);
   gap: clamp(var(--space-6), 4vw, var(--space-8));
-  align-items: center;
+  align-items: stretch;
 }
 
 .geo-map-wrap {
   display: grid;
   gap: var(--space-4);
   max-width: 560px;
+  height: 100%;
+  align-content: stretch;
 }
 
 .geo-map-shell {
@@ -790,12 +807,16 @@ svg text {
   border-radius: var(--radius-lg);
   padding: var(--space-3);
   overflow: hidden;
+  display: flex;
+  min-height: 100%;
 }
 
 .geo-map-object {
   display: block;
+  flex: 1 1 auto;
   width: 100%;
-  height: clamp(260px, 31vw, 360px);
+  height: 100%;
+  min-height: clamp(360px, 42vw, 520px);
 }
 
 .geo-legend {
@@ -1228,6 +1249,15 @@ input:focus, textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .geo-map-wrap {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .geo-map-object {
+    min-height: clamp(300px, 55vw, 420px);
+  }
+
   .site-nav {
     position: fixed;
     inset: 120px 16px auto 16px;
@@ -1275,6 +1305,10 @@ input:focus, textarea:focus {
 
   .map-placeholder {
     padding: var(--space-6);
+  }
+
+  body[data-page="home"] .cad-anim {
+    min-height: 320px;
   }
 
   .geo-legend {
