@@ -13,9 +13,8 @@
         <style type="text/css">
         #Other_State_Boundarys { display: none; }
         #State_Outline { fill:#d7e2f4; stroke:#8ea8ca; stroke-width:1.15; }
-        #Subjects_Outline [id] { fill:#c3d3ea; stroke:#ffffff; stroke-width:1.1; cursor:pointer; transition:fill .2s ease; }
-        #Subjects_Outline [id]:hover { fill:#8cb6e8; }
-        #YAN, #KHM, #TYU, #TOM, #ORE, #KL { fill:#2b6cc9; }
+        #Subjects_Outline [id] { fill:#c3d3ea; stroke:#ffffff; stroke-width:1.1; transition:fill .2s ease; }
+        #YAN, #KHM, #TYU, #TOM, #ORE, #KL { fill:#2b6cc9; cursor:pointer; }
         #YAN:hover, #KHM:hover, #TYU:hover, #TOM:hover, #ORE:hover, #KL:hover { fill:#00b3d6; }
     </style>
   <g id="Other_State_Boundarys" style="fill:#c8c8c8;stroke:black">
