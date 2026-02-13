@@ -119,11 +119,8 @@ if (rfMapObject) {
 
       regionNode.setAttribute('aria-label', name);
       regionNode.setAttribute('tabindex', '0');
-      if (!regionNode.querySelector('title')) {
-        const title = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'title');
-        title.textContent = name;
-        regionNode.prepend(title);
-      }
+      const nativeTitle = regionNode.querySelector('title');
+      if (nativeTitle) nativeTitle.remove();
 
       regionNode.addEventListener('mouseenter', (event) => showTooltip(name, event));
       regionNode.addEventListener('mousemove', moveTooltip);
