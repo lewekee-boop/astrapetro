@@ -599,6 +599,12 @@ svg text {
   fill: rgba(90, 103, 122, 0.9);
 }
 
+.cad-axis-labels text {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-600);
+  fill: rgba(31, 95, 191, 0.75);
+}
+
 
 
 
