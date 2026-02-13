@@ -54,6 +54,7 @@ if (rfMapObject) {
     ORE: 'Оренбург',
     KL: 'Калмыкия'
   };
+  const regionIds = Object.keys(regionNames);
 
   const tooltip = document.createElement('div');
   tooltip.className = 'geo-tooltip';
@@ -92,6 +93,22 @@ if (rfMapObject) {
     tooltip.classList.remove('is-visible');
   };
 
+  const setActiveRegion = (svgDoc, activeId) => {
+    regionIds.forEach((id) => {
+      const node = svgDoc.getElementById(id);
+      if (!node) return;
+      node.classList.toggle('is-active', id === activeId);
+    });
+  };
+
+  const showTooltipNearMap = (text) => {
+    tooltip.textContent = text;
+    const rect = rfMapObject.getBoundingClientRect();
+    tooltip.style.left = `${rect.left + 16}px`;
+    tooltip.style.top = `${rect.top + 16}px`;
+    tooltip.classList.add('is-visible');
+  };
+
   const setupMapRegions = () => {
     const svgDoc = rfMapObject.contentDocument;
     if (!svgDoc) return;
@@ -101,6 +118,7 @@ if (rfMapObject) {
       if (!regionNode) return;
 
       regionNode.setAttribute('aria-label', name);
+      regionNode.setAttribute('tabindex', '0');
       if (!regionNode.querySelector('title')) {
         const title = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'title');
         title.textContent = name;
@@ -110,6 +128,26 @@ if (rfMapObject) {
       regionNode.addEventListener('mouseenter', (event) => showTooltip(name, event));
       regionNode.addEventListener('mousemove', moveTooltip);
       regionNode.addEventListener('mouseleave', hideTooltip);
+      regionNode.addEventListener('click', (event) => {
+        setActiveRegion(svgDoc, id);
+        showTooltip(name, event);
+      });
+      regionNode.addEventListener('touchstart', () => {
+        setActiveRegion(svgDoc, id);
+        showTooltipNearMap(name);
+      }, { passive: true });
+      regionNode.addEventListener('focus', () => {
+        setActiveRegion(svgDoc, id);
+        showTooltipNearMap(name);
+      });
+      regionNode.addEventListener('blur', hideTooltip);
+      regionNode.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setActiveRegion(svgDoc, id);
+          showTooltipNearMap(name);
+        }
+      });
     });
   };
 
