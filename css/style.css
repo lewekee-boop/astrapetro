@@ -528,7 +528,7 @@ svg text {
 .cad-anim::before {
   content: "";
   position: absolute;
-  inset: 14px;
+  inset: 0;
   border-radius: 10px;
   background: var(--surface-bg);
   z-index: 0;
