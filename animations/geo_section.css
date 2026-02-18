@@ -1,0 +1,349 @@
+﻿:root {
+  --geo-line-width: 1.4;
+  --geo-line-thin: 1;
+  --geo-line-strong: 1.8;
+  --geo-grid-color: rgba(31, 95, 191, 0.16);
+  --geo-axis-color: rgba(31, 95, 191, 0.3);
+  --geo-strata-color: rgba(31, 95, 191, 0.55);
+  --geo-strata-soft: rgba(31, 95, 191, 0.35);
+  --geo-trap-fill: rgba(123, 188, 241, 0.18);
+  --geo-trap-cell: rgba(31, 95, 191, 0.26);
+  --geo-oil: rgba(43, 51, 64, 0.9);
+  --geo-oil-soft: rgba(43, 51, 64, 0.62);
+  --geo-duration-strata: 2200ms;
+  --geo-duration-well: 2400ms;
+  --geo-duration-trap: 720ms;
+  --geo-duration-fill: 1200ms;
+  --geo-duration-flow: 2600ms;
+  --geo-loop-fade: 700ms;
+}
+
+.geo-anim {
+  position: relative;
+  height: 100%;
+  min-height: clamp(380px, 47vw, 560px);
+  margin-bottom: 0;
+}
+
+.geo-section-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.geo-section-svg path,
+.geo-section-svg line,
+.geo-section-svg rect,
+.geo-section-svg circle {
+  vector-effect: non-scaling-stroke;
+}
+
+.geo-section-svg #grid path {
+  fill: none;
+  stroke: var(--geo-grid-color);
+  stroke-width: var(--geo-line-thin);
+}
+
+.geo-section-svg #axes path {
+  fill: none;
+  stroke: var(--geo-axis-color);
+  stroke-width: var(--geo-line-strong);
+}
+
+.geo-section-svg #strata .strata-line {
+  fill: none;
+  stroke: var(--geo-strata-color);
+  stroke-width: var(--geo-line-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.95;
+  stroke-dasharray: var(--path-length, 1);
+  stroke-dashoffset: var(--path-length, 1);
+  transition: stroke-dashoffset var(--geo-duration-strata) cubic-bezier(0.18, 0.85, 0.24, 1);
+}
+
+.geo-section-svg #strata .strata-line.soft {
+  stroke: var(--geo-strata-soft);
+}
+
+.geo-section-svg.is-scene-1 #strata .strata-line {
+  stroke-dashoffset: 0;
+}
+
+.geo-section-svg #well .well-path {
+  fill: none;
+  stroke: var(--geo-strata-color);
+  stroke-width: calc(var(--geo-line-width) + 0.4);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--well-length, 1);
+  stroke-dashoffset: var(--well-length, 1);
+  transition: stroke-dashoffset var(--geo-duration-well) cubic-bezier(0.2, 0.72, 0.25, 1);
+}
+
+.geo-section-svg.is-scene-2 #well .well-path,
+.geo-section-svg.is-scene-3 #well .well-path,
+.geo-section-svg.is-scene-4 #well .well-path {
+  stroke-dashoffset: 0;
+}
+
+.geo-section-svg #well .well-bit,
+.geo-section-svg #well .well-bit-halo {
+  opacity: 0;
+}
+
+.geo-section-svg #well .well-bit {
+  fill: rgba(43, 108, 201, 0.75);
+  transition: opacity 260ms ease;
+}
+
+.geo-section-svg #well .well-bit-halo {
+  fill: rgba(43, 108, 201, 0.16);
+  transform-origin: center;
+  transition: opacity 260ms ease;
+}
+
+.geo-section-svg.is-scene-2 #well .well-bit,
+.geo-section-svg.is-scene-3 #well .well-bit,
+.geo-section-svg.is-scene-4 #well .well-bit,
+.geo-section-svg.is-scene-2 #well .well-bit-halo,
+.geo-section-svg.is-scene-3 #well .well-bit-halo,
+.geo-section-svg.is-scene-4 #well .well-bit-halo {
+  opacity: 1;
+}
+
+.geo-section-svg.is-scene-2 #well .well-bit-halo,
+.geo-section-svg.is-scene-3 #well .well-bit-halo,
+.geo-section-svg.is-scene-4 #well .well-bit-halo {
+  animation: geo-bit-pulse 1400ms ease-in-out infinite;
+}
+
+.geo-section-svg #trap .trap-outline {
+  fill: none;
+  stroke: var(--geo-strata-color);
+  stroke-width: calc(var(--geo-line-width) + 0.3);
+  opacity: 0;
+  transition: opacity var(--geo-duration-trap) ease;
+}
+
+.geo-section-svg #trap .trap-body {
+  fill: url(#trap-cell);
+  opacity: 0;
+  transition: opacity var(--geo-duration-trap) ease;
+}
+
+.geo-section-svg #trap .trap-cap {
+  fill: none;
+  stroke: rgba(31, 95, 191, 0.32);
+  stroke-width: var(--geo-line-thin);
+  stroke-dasharray: 5 6;
+  opacity: 0;
+  transition: opacity var(--geo-duration-trap) ease;
+}
+
+.geo-section-svg.is-scene-3 #trap .trap-outline,
+.geo-section-svg.is-scene-4 #trap .trap-outline,
+.geo-section-svg.is-scene-3 #trap .trap-body,
+.geo-section-svg.is-scene-4 #trap .trap-body,
+.geo-section-svg.is-scene-3 #trap .trap-cap,
+.geo-section-svg.is-scene-4 #trap .trap-cap {
+  opacity: 1;
+}
+
+.geo-section-svg #oil #oil-route {
+  fill: none;
+  stroke: rgba(43, 51, 64, 0.2);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.geo-section-svg #oil .oil-mass {
+  fill: var(--geo-oil);
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity 220ms ease;
+}
+
+.geo-section-svg #oil .oil-wave {
+  fill: var(--geo-oil-soft);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.geo-section-svg #oil #oil-reveal-rect {
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform var(--geo-duration-fill) cubic-bezier(0.28, 0.9, 0.36, 1);
+}
+
+.geo-section-svg #oil .oil-packet {
+  fill: var(--geo-oil);
+  opacity: 0;
+}
+
+.geo-section-svg.is-scene-3 #oil #oil-route,
+.geo-section-svg.is-scene-4 #oil #oil-route {
+  opacity: 1;
+}
+
+.geo-section-svg.is-scene-3 #oil .oil-mass,
+.geo-section-svg.is-scene-4 #oil .oil-mass,
+.geo-section-svg.is-scene-3 #oil .oil-wave,
+.geo-section-svg.is-scene-4 #oil .oil-wave {
+  opacity: 1;
+}
+
+.geo-section-svg.is-scene-3 #oil .oil-mass,
+.geo-section-svg.is-scene-4 #oil .oil-mass,
+.geo-section-svg.is-scene-3 #oil .oil-wave,
+.geo-section-svg.is-scene-4 #oil .oil-wave {
+  animation: geo-oil-pulse 2100ms ease-in-out infinite;
+}
+
+.geo-section-svg.is-scene-3 #oil #oil-reveal-rect,
+.geo-section-svg.is-scene-4 #oil #oil-reveal-rect {
+  transform: scaleX(1);
+}
+
+.geo-section-svg #flow .flow-path {
+  fill: none;
+  stroke: var(--geo-oil);
+  stroke-width: calc(var(--geo-line-width) + 0.4);
+  stroke-linecap: round;
+  stroke-dasharray: 10 12;
+  stroke-dashoffset: 0;
+  opacity: 0;
+}
+
+.geo-section-svg.is-scene-4 #flow .flow-path {
+  opacity: 0.95;
+  animation: geo-flow 620ms linear infinite, geo-flow-pulse 1400ms ease-in-out infinite;
+}
+
+.geo-section-svg.is-resetting #oil,
+.geo-section-svg.is-resetting #flow {
+  opacity: 0;
+  transition: opacity var(--geo-loop-fade) ease;
+}
+
+.geo-section-svg.is-no-transition *,
+.geo-section-svg.is-no-transition #strata .strata-line,
+.geo-section-svg.is-no-transition #well .well-path,
+.geo-section-svg.is-no-transition #oil #oil-reveal-rect {
+  transition: none !important;
+  animation: none !important;
+}
+
+.geo-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.875rem;
+  font-family: var(--font-display, "Oswald", "Segoe UI", sans-serif);
+  line-height: 1.15;
+  color: var(--gray-600, #2b3340);
+  text-align: center;
+}
+
+.geo-caption span {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.geo-caption span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 58%;
+  height: 2px;
+  transform: translateX(-50%);
+  background: rgba(31, 95, 191, 0.45);
+}
+
+@keyframes geo-bit-pulse {
+  0%,
+  100% { transform: scale(0.85); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes geo-oil-pulse {
+  0%,
+  100% { opacity: 0.84; }
+  50% { opacity: 1; }
+}
+
+@keyframes geo-flow {
+  to { stroke-dashoffset: 44; }
+}
+
+@keyframes geo-flow-pulse {
+  0%,
+  100% { opacity: 0.72; }
+  50% { opacity: 0.95; }
+}
+
+@media (max-width: 700px) {
+  .geo-anim {
+    min-height: 320px;
+  }
+
+  .geo-caption {
+    bottom: 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .geo-section-svg #strata .strata-line,
+  .geo-section-svg #well .well-path,
+  .geo-section-svg #trap .trap-outline,
+  .geo-section-svg #trap .trap-body,
+  .geo-section-svg #trap .trap-cap,
+  .geo-section-svg #oil .oil-mass,
+  .geo-section-svg #oil .oil-wave,
+  .geo-section-svg #oil #oil-route,
+  .geo-section-svg #flow .flow-path,
+  .geo-section-svg #well .well-bit,
+  .geo-section-svg #well .well-bit-halo {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .geo-section-svg #strata .strata-line,
+  .geo-section-svg #well .well-path {
+    stroke-dashoffset: 0;
+  }
+
+  .geo-section-svg #trap .trap-outline,
+  .geo-section-svg #trap .trap-body,
+  .geo-section-svg #trap .trap-cap,
+  .geo-section-svg #oil .oil-mass,
+  .geo-section-svg #oil .oil-wave,
+  .geo-section-svg #oil #oil-route,
+  .geo-section-svg #flow .flow-path,
+  .geo-section-svg #well .well-bit,
+  .geo-section-svg #well .well-bit-halo {
+    opacity: 1;
+  }
+
+  .geo-section-svg #oil #oil-reveal-rect {
+    transform: scaleX(1);
+    transition: none !important;
+  }
+
+  .geo-section-svg #flow .flow-path {
+    stroke-dashoffset: 0;
+  }
+
+  .geo-section-svg #oil .oil-packet {
+    opacity: 0;
+  }
+}
