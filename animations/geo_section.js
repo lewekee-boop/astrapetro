@@ -25,11 +25,13 @@
 
 function createGeoSectionController(svg) {
   const strataPaths = Array.from(svg.querySelectorAll('#strata .strata-line'));
+  const reservoirBands = Array.from(svg.querySelectorAll('#strata .reservoir-band'));
   const wellPath = svg.querySelector('#well-path');
   const oilRoute = svg.querySelector('#oil-route');
   const oilPackets = Array.from(svg.querySelectorAll('#oil .oil-packet'));
 
   strataPaths.forEach((path) => setPathLength(path, '--path-length'));
+  reservoirBands.forEach((path) => setPathLength(path, '--path-length'));
   if (wellPath) setPathLength(wellPath, '--well-length');
 
   let oilRouteLength = 0;
@@ -138,7 +140,8 @@ function createGeoSectionController(svg) {
     schedule(() => svg.classList.add('is-scene-2'), sceneTimeline.scene1);
     schedule(() => {
       svg.classList.add('is-scene-3');
-      animateOilPackets(1700);
+      // Let the trap fill appear first, then drive inflow to the well.
+      schedule(() => animateOilPackets(1900), 520);
     }, sceneTimeline.scene2);
     schedule(() => svg.classList.add('is-scene-4'), sceneTimeline.scene3);
     schedule(() => svg.classList.add('is-resetting'), sceneTimeline.scene4);

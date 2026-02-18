@@ -1,14 +1,14 @@
 ﻿:root {
-  --geo-line-width: 2.1;
-  --geo-line-thin: 1.35;
-  --geo-line-strong: 1.8;
-  --grid: rgba(31, 95, 191, 0.24);
-  --axes: rgba(31, 95, 191, 0.46);
-  --strata: rgba(31, 95, 191, 0.78);
-  --reservoir: rgba(20, 62, 132, 0.98);
-  --oil: rgba(20, 24, 30, 0.96);
-  --geo-strata-soft: rgba(61, 126, 218, 0.62);
-  --geo-oil-soft: rgba(20, 24, 30, 0.66);
+  --geo-line-width: 2.35;
+  --geo-line-thin: 1.15;
+  --geo-line-strong: 1.65;
+  --grid: rgba(31, 95, 191, 0.16);
+  --axes: rgba(31, 95, 191, 0.34);
+  --strata: rgba(34, 116, 232, 0.96);
+  --reservoir: rgba(15, 66, 154, 1);
+  --oil: rgba(10, 12, 16, 0.98);
+  --geo-strata-soft: rgba(54, 141, 242, 0.82);
+  --geo-oil-soft: rgba(10, 12, 16, 0.72);
   --geo-duration-strata: 2200ms;
   --geo-duration-well: 2400ms;
   --geo-duration-trap: 720ms;
@@ -55,7 +55,7 @@
   stroke-width: var(--geo-line-width);
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.98;
+  opacity: 1;
   stroke-dasharray: var(--path-length, 1);
   stroke-dashoffset: var(--path-length, 1);
   transition: stroke-dashoffset var(--geo-duration-strata) cubic-bezier(0.18, 0.85, 0.24, 1);
@@ -67,16 +67,16 @@
 
 .geo-section-svg #strata .strata-line.reservoir-layer {
   stroke: var(--reservoir);
-  stroke-width: calc(var(--geo-line-width) + 0.5);
+  stroke-width: calc(var(--geo-line-width) + 0.55);
 }
 
 .geo-section-svg #strata .reservoir-band {
   fill: none;
   stroke: var(--reservoir);
-  stroke-width: calc(var(--geo-line-width) + 0.9);
+  stroke-width: calc(var(--geo-line-width) + 1.05);
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.94;
+  opacity: 0.96;
   stroke-dasharray: var(--path-length, 1);
   stroke-dashoffset: var(--path-length, 1);
   transition: stroke-dashoffset var(--geo-duration-strata) cubic-bezier(0.18, 0.85, 0.24, 1);
@@ -89,8 +89,8 @@
 
 .geo-section-svg #well .well-path {
   fill: none;
-  stroke: var(--strata);
-  stroke-width: calc(var(--geo-line-width) + 0.25);
+  stroke: var(--axes);
+  stroke-width: calc(var(--geo-line-width) + 0.1);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: var(--well-length, 1);
@@ -110,12 +110,12 @@
 }
 
 .geo-section-svg #well .well-bit {
-  fill: rgba(43, 108, 201, 0.82);
+  fill: rgba(43, 108, 201, 0.9);
   transition: opacity 260ms ease;
 }
 
 .geo-section-svg #well .well-bit-halo {
-  fill: rgba(43, 108, 201, 0.2);
+  fill: rgba(43, 108, 201, 0.24);
   transform-origin: center;
   transition: opacity 260ms ease;
 }
@@ -144,7 +144,7 @@
 }
 
 .geo-section-svg #trap .trap-lens {
-  fill: rgba(20, 62, 132, 0.2);
+  fill: rgba(15, 66, 154, 0.24);
   opacity: 0;
   transition: opacity var(--geo-duration-trap) ease;
 }
@@ -158,9 +158,9 @@
 
 .geo-section-svg #oil #oil-route {
   fill: none;
-  stroke: rgba(20, 24, 30, 0.32);
-  stroke-width: 1.1;
-  stroke-dasharray: 3 5;
+  stroke: rgba(10, 12, 16, 0.38);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 5;
   opacity: 0;
   transition: opacity 320ms ease;
 }
@@ -180,7 +180,7 @@
 
 .geo-section-svg #oil #oil-reveal-rect {
   transform-box: fill-box;
-  transform-origin: left center;
+  transform-origin: right center;
   transform: scaleX(0);
   transition: transform var(--geo-duration-fill) cubic-bezier(0.28, 0.9, 0.36, 1);
 }
@@ -217,16 +217,16 @@
 .geo-section-svg #flow .flow-path {
   fill: none;
   stroke: var(--oil);
-  stroke-width: calc(var(--geo-line-width) + 0.25);
+  stroke-width: calc(var(--geo-line-width) + 0.3);
   stroke-linecap: round;
-  stroke-dasharray: 10 12;
+  stroke-dasharray: 18 9;
   stroke-dashoffset: 0;
   opacity: 0;
 }
 
 .geo-section-svg.is-scene-4 #flow .flow-path {
   opacity: 0.98;
-  animation: geo-flow 620ms linear infinite, geo-flow-pulse 1400ms ease-in-out infinite;
+  animation: geo-flow 860ms linear infinite, geo-flow-pulse 1800ms ease-in-out infinite;
 }
 
 .geo-section-svg.is-resetting #oil,
@@ -282,17 +282,17 @@
 
 @keyframes geo-oil-pulse {
   0%,
-  100% { opacity: 0.84; }
+  100% { opacity: 0.88; }
   50% { opacity: 1; }
 }
 
 @keyframes geo-flow {
-  to { stroke-dashoffset: 44; }
+  to { stroke-dashoffset: -54; }
 }
 
 @keyframes geo-flow-pulse {
   0%,
-  100% { opacity: 0.72; }
+  100% { opacity: 0.8; }
   50% { opacity: 0.98; }
 }
 
