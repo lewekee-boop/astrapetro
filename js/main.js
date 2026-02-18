@@ -106,6 +106,18 @@ if (rfMapObject) {
     const svgDoc = rfMapObject.contentDocument;
     if (!svgDoc) return;
 
+    // Enforce infographic mode: no links/click navigation inside embedded SVG.
+    const anchors = Array.from(svgDoc.querySelectorAll('a'));
+    anchors.forEach((anchor) => {
+      const parent = anchor.parentNode;
+      if (!parent) return;
+      while (anchor.firstChild) {
+        parent.insertBefore(anchor.firstChild, anchor);
+      }
+      parent.removeChild(anchor);
+    });
+    svgDoc.querySelectorAll('[onclick]').forEach((node) => node.removeAttribute('onclick'));
+
     const subjectsGroup = svgDoc.getElementById('Subjects_Outline');
     const regionNodes = subjectsGroup ? Array.from(subjectsGroup.querySelectorAll('[id]')) : [];
 
@@ -113,8 +125,9 @@ if (rfMapObject) {
       const id = regionNode.id;
       const isPresenceRegion = regionIds.has(id);
       regionNode.setAttribute('data-region', id);
+      regionNode.setAttribute('data-presence', isPresenceRegion ? 'true' : 'false');
       regionNode.style.pointerEvents = isPresenceRegion ? 'auto' : 'none';
-      regionNode.style.cursor = isPresenceRegion ? 'default' : 'auto';
+      regionNode.style.cursor = isPresenceRegion ? 'help' : 'default';
 
       if (!isPresenceRegion) return;
 
