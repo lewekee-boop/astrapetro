@@ -62,13 +62,13 @@
             <div class="cad-anim geo-anim" aria-hidden="true">
               <svg class="geo-section-svg" data-geo-section-svg viewBox="0 0 520 280" preserveAspectRatio="xMidYMid meet" role="presentation" focusable="false">
                 <defs>
-                  <path id="reservoir-lens-shape" d="M222 169C246 159 276 154 309 155C341 156 371 163 396 174C371 181 343 185 311 186C278 186 247 181 222 169Z" />
+                  <path id="reservoir-lens-shape" d="M178 176C201 166 230 160 260 160C291 160 319 166 343 176C319 184 291 189 260 189C229 189 201 184 178 176Z" />
                   <clipPath id="reservoir-lens-clip">
                     <use href="#reservoir-lens-shape" />
                   </clipPath>
                   <mask id="oil-reveal-mask">
                     <rect x="0" y="0" width="520" height="280" fill="black" />
-                    <rect id="oil-reveal-rect" x="220" y="152" width="180" height="38" rx="12" ry="12" fill="white" />
+                    <rect id="oil-reveal-rect" x="178" y="158" width="165" height="34" rx="11" ry="11" fill="white" />
                   </mask>
                 </defs>
 
@@ -85,15 +85,15 @@
                   <path class="strata-line" d="M34 70C96 56 156 58 220 72C286 86 354 95 486 80" />
                   <path class="strata-line soft" d="M34 100C108 86 176 89 246 106C316 123 379 132 486 116" />
                   <path class="strata-line" d="M34 132C102 122 165 126 226 141C293 156 360 166 486 152" />
-                  <path class="strata-line reservoir-layer" d="M34 164C98 156 156 161 218 176C286 192 353 201 486 186" />
-                  <path class="reservoir-band" d="M214 171C242 160 275 155 311 156C347 157 376 164 403 176" />
+                  <path class="strata-line reservoir-layer" d="M34 166C102 156 164 160 224 174C290 188 356 195 486 182" />
+                  <path class="reservoir-band" d="M182 174C208 166 233 162 260 162C288 162 313 166 338 174" />
                   <path class="strata-line" d="M34 196C110 188 176 195 246 210C319 226 385 236 486 222" />
                 </g>
 
                 <g id="well">
-                  <path id="well-path" class="well-path" d="M128 18L128 168Q128 176 136 176L286 176Q298 176 298 168" />
-                  <circle class="well-bit-halo" cx="298" cy="168" r="10" />
-                  <circle class="well-bit" cx="298" cy="168" r="4.5" />
+                  <path id="well-path" class="well-path" d="M260 18V176" />
+                  <circle class="well-bit-halo" cx="260" cy="176" r="10" />
+                  <circle class="well-bit" cx="260" cy="176" r="4.5" />
                 </g>
 
                 <g id="trap">
@@ -102,16 +102,16 @@
                 </g>
 
                 <g id="oil">
-                  <path id="oil-route" d="M386 173C355 166 331 164 314 165C306 166 301 167 298 168" />
-                  <path class="oil-mass" clip-path="url(#reservoir-lens-clip)" mask="url(#oil-reveal-mask)" d="M222 170C247 160 276 155 311 156C347 157 377 165 402 176L402 188L222 188Z" />
-                  <path class="oil-wave" clip-path="url(#reservoir-lens-clip)" mask="url(#oil-reveal-mask)" d="M232 173C252 166 278 164 307 165C337 167 365 172 391 178L391 184C364 179 336 176 306 175C277 174 252 177 232 181Z" />
-                  <circle class="oil-packet" r="3.3" cx="386" cy="173" />
-                  <circle class="oil-packet" r="2.9" cx="386" cy="173" />
-                  <circle class="oil-packet" r="2.6" cx="386" cy="173" />
+                  <path id="oil-route" d="M338 176C315 172 292 172 274 174C268 175 264 176 260 176" />
+                  <path class="oil-mass" clip-path="url(#reservoir-lens-clip)" mask="url(#oil-reveal-mask)" d="M178 176C202 166 230 160 260 160C291 160 320 166 343 176L343 189L178 189Z" />
+                  <path class="oil-wave" clip-path="url(#reservoir-lens-clip)" mask="url(#oil-reveal-mask)" d="M188 178C208 171 233 169 260 170C288 171 313 175 332 180L332 186C313 182 287 179 260 178C233 177 208 179 188 183Z" />
+                  <circle class="oil-packet" r="3.3" cx="338" cy="176" />
+                  <circle class="oil-packet" r="2.9" cx="338" cy="176" />
+                  <circle class="oil-packet" r="2.6" cx="338" cy="176" />
                 </g>
 
                 <g id="flow">
-                  <path class="flow-path" d="M298 168Q298 176 286 176L136 176Q128 176 128 168L128 18" />
+                  <path class="flow-path" d="M260 176V18" />
                 </g>
               </svg>
               <div class="geo-caption">
