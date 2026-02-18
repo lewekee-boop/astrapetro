@@ -54,7 +54,8 @@ if (rfMapObject) {
     ORE: 'Оренбург',
     KL: 'Калмыкия'
   };
-  const regionIds = Object.keys(regionNames);
+  const regionIds = new Set(Object.keys(regionNames));
+  const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
 
   const tooltip = document.createElement('div');
   tooltip.className = 'geo-tooltip';
@@ -93,14 +94,6 @@ if (rfMapObject) {
     tooltip.classList.remove('is-visible');
   };
 
-  const setActiveRegion = (svgDoc, activeId) => {
-    regionIds.forEach((id) => {
-      const node = svgDoc.getElementById(id);
-      if (!node) return;
-      node.classList.toggle('is-active', id === activeId);
-    });
-  };
-
   const showTooltipNearMap = (text) => {
     tooltip.textContent = text;
     const rect = rfMapObject.getBoundingClientRect();
@@ -113,43 +106,54 @@ if (rfMapObject) {
     const svgDoc = rfMapObject.contentDocument;
     if (!svgDoc) return;
 
-    Object.entries(regionNames).forEach(([id, name]) => {
-      const regionNode = svgDoc.getElementById(id);
-      if (!regionNode) return;
+    const subjectsGroup = svgDoc.getElementById('Subjects_Outline');
+    const regionNodes = subjectsGroup ? Array.from(subjectsGroup.querySelectorAll('[id]')) : [];
 
+    regionNodes.forEach((regionNode) => {
+      const id = regionNode.id;
+      const isPresenceRegion = regionIds.has(id);
+      regionNode.setAttribute('data-region', id);
+      regionNode.style.pointerEvents = isPresenceRegion ? 'auto' : 'none';
+      regionNode.style.cursor = isPresenceRegion ? 'default' : 'auto';
+
+      if (!isPresenceRegion) return;
+
+      const name = regionNames[id];
       regionNode.setAttribute('aria-label', name);
-      regionNode.setAttribute('tabindex', '0');
       const nativeTitle = regionNode.querySelector('title');
       if (nativeTitle) nativeTitle.remove();
 
       regionNode.addEventListener('mouseenter', (event) => showTooltip(name, event));
       regionNode.addEventListener('mousemove', moveTooltip);
       regionNode.addEventListener('mouseleave', hideTooltip);
-      regionNode.addEventListener('click', (event) => {
-        setActiveRegion(svgDoc, id);
-        showTooltip(name, event);
-      });
-      regionNode.addEventListener('touchstart', () => {
-        setActiveRegion(svgDoc, id);
+      regionNode.addEventListener('touchstart', (event) => {
+        event.preventDefault();
         showTooltipNearMap(name);
-      }, { passive: true });
-      regionNode.addEventListener('focus', () => {
-        setActiveRegion(svgDoc, id);
-        showTooltipNearMap(name);
-      });
-      regionNode.addEventListener('blur', hideTooltip);
-      regionNode.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          setActiveRegion(svgDoc, id);
-          showTooltipNearMap(name);
-        }
-      });
+      }, { passive: false });
     });
+
+    if (coarsePointer) {
+      svgDoc.addEventListener('touchstart', (event) => {
+        const region = event.target?.closest?.('[id]');
+        if (!region || !regionIds.has(region.id)) {
+          hideTooltip();
+        }
+      }, { passive: true });
+    }
   };
 
   rfMapObject.addEventListener('load', setupMapRegions);
   setupMapRegions();
+
+  document.addEventListener('touchstart', (event) => {
+    if (rfMapObject.contains(event.target)) return;
+    hideTooltip();
+  }, { passive: true });
+
+  document.addEventListener('pointerdown', (event) => {
+    if (rfMapObject.contains(event.target)) return;
+    hideTooltip();
+  }, { passive: true });
 
   window.addEventListener('scroll', hideTooltip, { passive: true });
 }
