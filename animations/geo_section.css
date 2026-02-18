@@ -4,10 +4,10 @@
   --geo-line-strong: 1.65;
   --grid: rgba(31, 95, 191, 0.24);
   --axes: rgba(31, 95, 191, 0.44);
-  --strata: rgba(35, 122, 242, 0.84);
-  --reservoir: rgba(15, 66, 154, 0.92);
+  --strata: rgba(35, 122, 242, 1);
+  --reservoir: rgba(12, 58, 145, 1);
   --oil: rgba(10, 12, 16, 0.98);
-  --geo-strata-soft: rgba(59, 153, 255, 0.72);
+  --geo-strata-soft: rgba(59, 153, 255, 0.96);
   --geo-oil-soft: rgba(10, 12, 16, 0.86);
   --geo-duration-strata: 2200ms;
   --geo-duration-well: 2400ms;
@@ -22,6 +22,10 @@
   height: 100%;
   min-height: clamp(380px, 47vw, 560px);
   margin-bottom: 0;
+}
+
+.geo-anim::before {
+  background: transparent;
 }
 
 .geo-section-svg {
@@ -55,7 +59,7 @@
   stroke-width: var(--geo-line-width);
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.96;
+  opacity: 1;
   stroke-dasharray: none;
   stroke-dashoffset: 0;
   transition: none;
@@ -76,7 +80,7 @@
   stroke-width: calc(var(--geo-line-width) + 1.05);
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.98;
+  opacity: 1;
   stroke-dasharray: none;
   stroke-dashoffset: 0;
   transition: none;
