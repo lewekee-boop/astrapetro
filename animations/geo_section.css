@@ -4,10 +4,10 @@
   --geo-line-strong: 1.65;
   --grid: rgba(31, 95, 191, 0.24);
   --axes: rgba(31, 95, 191, 0.44);
-  --strata: rgba(35, 122, 242, 1);
-  --reservoir: rgba(12, 58, 145, 1);
+  --strata: rgba(35, 122, 242, 0.94);
+  --reservoir: rgba(12, 58, 145, 0.94);
   --oil: rgba(10, 12, 16, 0.98);
-  --geo-strata-soft: rgba(59, 153, 255, 0.96);
+  --geo-strata-soft: rgba(59, 153, 255, 0.94);
   --geo-oil-soft: rgba(10, 12, 16, 0.86);
   --geo-duration-strata: 2200ms;
   --geo-duration-well: 2400ms;
@@ -277,3 +277,4 @@
     opacity: 0;
   }
 }
+
