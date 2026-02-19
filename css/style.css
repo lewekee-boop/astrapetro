@@ -1098,7 +1098,7 @@ svg text {
 }
 
 .vacancy-img {
-  width: 100%;
+  width: 50%;
   aspect-ratio: 1 / 1;   /* квадрат */
   max-width: 1024px;
   object-fit: cover;
@@ -1399,6 +1399,7 @@ input:focus, textarea:focus {
     transform: translateX(-50%);
   }
 }
+
 
 
 
