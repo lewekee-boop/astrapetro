@@ -1097,16 +1097,17 @@ svg text {
   gap: var(--space-3);
 }
 
-.vacancy-img{
-  width: min(1024px, 100%);
-  height: min(1024px, 100vw);
+.vacancy-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* квадрат */
+  max-width: 1024px;
   object-fit: cover;
-  display: block;
   border-radius: 10px;
   border: 1px solid rgba(31, 95, 191, 0.2);
   margin-bottom: 12px;
   background: var(--white);
 }
+
 
 
 .progress-step {
@@ -1398,6 +1399,7 @@ input:focus, textarea:focus {
     transform: translateX(-50%);
   }
 }
+
 
 
 
